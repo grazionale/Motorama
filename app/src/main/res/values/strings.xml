@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Motorama</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="Motorama">motorama</string>
+    <string name="o_seu_controle_de_gastos">O seu controle de gastos</string>
+    <string name="motorama">Motorama</string>
+    <string name="cadastrarMoto">Cadastrar</string>
+    <string name="informe_os_dados_do_veiculo">Informe os Dados do Veículo</string>
+    <string name="nenhum_veiculo_encontrado">Nenhum veículo encontrado - Toque no  + para adicionar seu primeiro veículo</string>
+    <string name="nenhum_veiculo_encontrado_2">Nenhum Veículo Encontrado</string>
+    <string name="toque_no_mais">Toque no + para adicionar seu primeiro veículo</string>
+    <string name="title_activity_sobre">Sobre</string>
+    <string name="seus_veiculos">Seus Veículos</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Motorama</string>
+    <string name="seus_veiculos">Your Motorcycles</string>
+    <string name="title_activity_sobre">About</string>
+    <string name="toque_no_mais">Touch + for add your first motorcycle</string>
+    <string name="nenhum_veiculo_encontrado_2">No motorcycle found</string>
+    <string name="nenhum_veiculo_encontrado">No motorcycle found - Touch + for add your first motorcycle</string>
+    <string name="informe_os_dados_do_veiculo">Enter motorcycle data</string>
+    <string name="cadastrarMoto">Register</string>
+    <string name="motorama">Motorama</string>
+    <string name="o_seu_controle_de_gastos">"Your spending control "</string>
+    <string name="Motorama">motorama</string>
+</resources>
