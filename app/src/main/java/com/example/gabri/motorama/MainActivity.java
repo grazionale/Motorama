@@ -13,10 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+/*****/
+        private ArrayAdapter<String> listaAdapterMotos;
+        private ListView listViewMotos;
+/******/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +52,37 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // ***** //
+
+        listViewMotos = findViewById(R.id.listViewMotos);
+        popularLista();
+
+    }
+    //******************///
+    private void popularLista(){
+        ArrayList<String> lista = new ArrayList<>();
+
+        lista.add("Moto1");
+        lista.add("Moto2");
+
+        listaAdapterMotos = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
+
+        listViewMotos.setAdapter(listaAdapterMotos);
     }
 
+
+
+
+
+
+
+
+
+
+
+
+    // ****************//
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
