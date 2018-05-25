@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -24,7 +25,9 @@ public class MainActivity extends AppCompatActivity
 /*****/
         private ArrayAdapter<String> listaAdapterMotos;
         private ListView listViewMotos;
-/******/
+        private TextView emptyText;
+
+    /******/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,9 @@ public class MainActivity extends AppCompatActivity
         // ***** //
 
         listViewMotos = findViewById(R.id.listViewMotos);
+        emptyText = (TextView)findViewById(android.R.id.empty);
+        listViewMotos.setEmptyView(emptyText);
+
         listarMotos();
 
     }
