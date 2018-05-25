@@ -17,16 +17,20 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.gabri.modelos.Moto;
+import com.example.gabri.persistencia.MotoramaDatabase;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 /*****/
-        private ArrayAdapter<String> listaAdapterMotos;
+        private ArrayAdapter<Moto> listaAdapterMotos;
+        private ArrayAdapter<String> listaAdapterMotosEstatico;
         private ListView listViewMotos;
         private TextView emptyText;
-
     /******/
 
     @Override
@@ -62,19 +66,32 @@ public class MainActivity extends AppCompatActivity
         emptyText = (TextView)findViewById(android.R.id.empty);
         listViewMotos.setEmptyView(emptyText);
 
+        //listarMotosEstatico();
+
         listarMotos();
 
     }
     //******************///
-    private void listarMotos(){
+    private void listarMotosEstatico(){
         ArrayList<String> lista = new ArrayList<>();
 
         lista.add("Moto1");
         lista.add("Moto2");
 
-        listaAdapterMotos = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
+        listaAdapterMotosEstatico = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
 
         listViewMotos.setAdapter(listaAdapterMotos);
+    }
+
+    private void listarMotos(){
+        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+
+        List<Moto> lista = database.motoDao().queryAll();
+
+        listaAdapterMotos = new ArrayAdapter<Moto>(this, android.R.layout.simple_list_item_1, lista);
+
+        listViewMotos.setAdapter(listaAdapterMotos);
+
     }
 
 

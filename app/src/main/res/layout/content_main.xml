@@ -12,8 +12,6 @@
         android:id="@+id/listViewMotos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#9b9b9b"
-        android:color="#0e71ce"
         android:layout_weight="1"
         />
 
