@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity
         // ***** //
 
         listViewMotos = findViewById(R.id.listViewMotos);
-        popularLista();
+        listarMotos();
 
     }
     //******************///
-    private void popularLista(){
+    private void listarMotos(){
         ArrayList<String> lista = new ArrayList<>();
 
         lista.add("Moto1");
