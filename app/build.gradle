@@ -33,4 +33,7 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.roomVersion"
     androidTestImplementation "android.arch.persistence.room:testing:$rootProject.roomVersion"
 
+    testImplementation "android.arch.persistence.room:testing:$room_version"
+
+
 }

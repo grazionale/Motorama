@@ -16,4 +16,9 @@
     <string name="toque_no_mais">Toque no + para adicionar seu primeiro veículo</string>
     <string name="title_activity_sobre">Sobre</string>
     <string name="seus_veiculos">Seus Veículos</string>
+    <string name="marca">Marca</string>
+    <string name="modelo">Modelo</string>
+    <string name="placa">Placa</string>
+    <string name="ano">Ano</string>
+    <string name="nova_moto">Nova Moto</string>
 </resources>
