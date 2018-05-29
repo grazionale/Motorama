@@ -27,4 +27,8 @@ public interface MotoDao {
 
     @Query("SELECT * FROM moto ORDER BY id ASC")
     public List<Moto> queryAll();
+
+//    @Query("SELECT modelo FROM moto ORDER BY id ASC")
+//    public List<Moto> queryAllModels();
 }
+

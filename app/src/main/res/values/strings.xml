@@ -21,4 +21,5 @@
     <string name="placa">Placa</string>
     <string name="ano">Ano</string>
     <string name="nova_moto">Nova Moto</string>
+    <string name="adicionar_gasto">Adicionar</string>
 </resources>

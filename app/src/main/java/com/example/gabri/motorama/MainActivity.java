@@ -3,7 +3,6 @@ package com.example.gabri.motorama;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +17,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gabri.modelos.Moto;
+import com.example.gabri.motorama.CadastrarMoto;
+import com.example.gabri.motorama.Detalhes;
+import com.example.gabri.motorama.MeusGastos;
+import com.example.gabri.motorama.MeusVeiculos;
+import com.example.gabri.motorama.R;
+import com.example.gabri.motorama.Sobre;
 import com.example.gabri.persistencia.MotoramaDatabase;
 
 import java.util.ArrayList;
@@ -148,6 +153,10 @@ public class MainActivity extends AppCompatActivity
             ChamaTelaMeusVeiculos();
         } else if (id == R.id.nav_informacoes) {
             ChamaTelaSobre();
+        } else if (id == R.id.nav_detalhes){
+            ChamaTelaDetalhes();
+        } else if (id == R.id.nav_meus_gastos){
+            ChamaTelaMeusGastos();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -169,4 +178,16 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, MeusVeiculos.class);
         startActivity(intent);
     }
+
+    private void ChamaTelaDetalhes() {
+        Intent intent = new Intent(this, Detalhes.class);
+        startActivity(intent);
+    }
+
+
+    public void ChamaTelaMeusGastos(){
+        Intent intent = new Intent(this, MeusGastos.class);
+        startActivity(intent);
+    }
+
 }

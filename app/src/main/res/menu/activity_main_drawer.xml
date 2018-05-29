@@ -6,8 +6,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_meus_veiculos"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_motorcycle_black_24dp"
             android:title="Meus Veículos" />
+
+        <item
+            android:id="@+id/nav_meus_gastos"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="Meus Gastos" />
 
     </group>
 
@@ -15,8 +20,17 @@
         <menu>
             <item
                 android:id="@+id/nav_informacoes"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_info_black_24dp"
                 android:title="Informações e Suporte" />
+        </menu>
+    </item>
+
+    <item android:title="Detalhes">
+        <menu>
+            <item
+                android:id="@+id/nav_detalhes"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Detalhes" />
         </menu>
     </item>
 

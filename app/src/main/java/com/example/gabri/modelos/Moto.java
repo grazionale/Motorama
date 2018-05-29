@@ -1,6 +1,7 @@
 package com.example.gabri.modelos;
 
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ public class Moto {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
+    @ColumnInfo(name = "modelo")
     @NonNull
     private String modelo;
 
@@ -23,15 +25,14 @@ public class Moto {
     @NonNull
     private int ano;
 
-    public Moto() {
-    }
-//    public Moto(int id, String modelo, String placa, String marca, int ano) {
-//        this.id = id;
-//        this.modelo = modelo;
-//        this.placa = placa;
-//        this.marca = marca;
-//        this.ano = ano;
+//    public Moto() {
 //    }
+    public Moto(String modelo, String placa, String marca, int ano) {
+        this.modelo = modelo;
+        this.placa = placa;
+        this.marca = marca;
+        this.ano = ano;
+    }
 
 
     public int getId() {
@@ -77,6 +78,9 @@ public class Moto {
 
     @Override
     public String toString() {
-        return getModelo();
+
+        String moto = getId() + "  |  " + getModelo() + "  |  " + getMarca() + "  |  " + getAno() + "  |  " + getPlaca();
+
+        return moto;
     }
 }

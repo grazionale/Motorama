@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.example.gabri.modelos.Moto;
 
-@Database(entities = {Moto.class}, version = 4)
+@Database(entities = {Moto.class}, version = 8)
 public abstract class MotoramaDatabase extends RoomDatabase {
 
     private static MotoramaDatabase instance;
@@ -16,10 +16,22 @@ public abstract class MotoramaDatabase extends RoomDatabase {
 
     public static MotoramaDatabase getDatabase(final Context context){
 
-        if(instance == null){
-            instance = Room.databaseBuilder(context, MotoramaDatabase.class, "motorama.db").allowMainThreadQueries().build();
-        }
+//        if(instance == null){
+//            instance = Room.databaseBuilder(context, MotoramaDatabase.class, "motorama.db").allowMainThreadQueries().build();
+//        }
+//
+//        return instance;
 
+        if (instance == null) {
+
+            synchronized (MotoramaDatabase.class) {
+                if (instance == null) {
+                    instance = Room.databaseBuilder(context,
+                            MotoramaDatabase.class,
+                            "pessoas.db").allowMainThreadQueries().build();
+                }
+            }
+        }
         return instance;
     }
 }

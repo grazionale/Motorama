@@ -1,6 +1,7 @@
 package com.example.gabri.motorama;
 
 import android.app.Activity;
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.drm.DrmStore;
 import android.support.v7.app.ActionBar;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.gabri.modelos.Moto;
+import com.example.gabri.motorama.R;
 import com.example.gabri.persistencia.MotoramaDatabase;
 
 public class CadastrarMoto extends AppCompatActivity {
@@ -26,6 +28,9 @@ public class CadastrarMoto extends AppCompatActivity {
 
     private int modo;
     private Moto moto;
+
+
+    public static MotoramaDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +70,20 @@ public class CadastrarMoto extends AppCompatActivity {
 
     public void cadastrarMoto(){
        // Toast.makeText(this, "PEGOU", Toast.LENGTH_SHORT).show();
-        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+        database = MotoramaDatabase.getDatabase(this);
 
-        Moto moto = new Moto();
+        int ano = Integer.parseInt(editTextAno.getText().toString());
+        String modelo = editTextModelo.getText().toString();
+        String marca = editTextMarca.getText().toString();
+        String placa = editTextPlaca.getText().toString();
 
-        moto.setModelo(editTextModelo.getText().toString());
-        moto.setMarca(editTextMarca.getText().toString());
-        moto.setPlaca(editTextPlaca.getText().toString());
-        moto.setAno(Integer.parseInt(editTextAno.getText().toString()));
+        Moto moto = new Moto(modelo, placa, marca, ano);
+
         try {
 
             database.motoDao().insert(moto);
-            setResult(Activity.RESULT_OK);
+            //setResult(Activity.RESULT_OK);
+            Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
             finish();
 
         } catch(Exception e){

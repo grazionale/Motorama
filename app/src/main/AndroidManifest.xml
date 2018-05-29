@@ -19,26 +19,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".CadastrarMoto"
-            android:parentActivityName="com.example.gabri.motorama.MainActivity">
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.gabri.motorama.MainActivity" />
-            </activity>
-
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gabri.motorama.com.example.gabri.MainActivity" />
+        </activity>
         <activity
             android:name=".MeusVeiculos"
-            android:parentActivityName="com.example.gabri.motorama.MainActivity">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gabri.motorama.MainActivity" />
         </activity>
-
         <activity
             android:name=".Sobre"
-            android:parentActivityName="com.example.gabri.motorama.MainActivity">
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gabri.motorama.MainActivity" />
+        </activity>
+        <activity android:name=".Detalhes" />
+
+        <activity
+            android:name=".CadastrarGasto"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.gabri.motorama.MainActivity" />
+        </activity>
+
+        <activity
+            android:name=".MeusGastos"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gabri.motorama.MainActivity" />
