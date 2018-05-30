@@ -25,14 +25,14 @@ public class Moto {
     @NonNull
     private int ano;
 
-//    public Moto() {
-//    }
-    public Moto(String modelo, String placa, String marca, int ano) {
-        this.modelo = modelo;
-        this.placa = placa;
-        this.marca = marca;
-        this.ano = ano;
+    public Moto() {
     }
+//    public Moto(String modelo, String placa, String marca, int ano) {
+//        this.modelo = modelo;
+//        this.placa = placa;
+//        this.marca = marca;
+//        this.ano = ano;
+//    }
 
 
     public int getId() {

@@ -105,6 +105,7 @@ public class Gasto {
     public String toString() {
         return "Gasto{" +
                 "id=" + id +
+                ", moto=" + moto +
                 ", descricao='" + descricao + '\'' +
                 ", comentario='" + comentario + '\'' +
                 ", km=" + km +

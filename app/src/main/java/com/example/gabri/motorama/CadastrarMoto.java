@@ -77,8 +77,12 @@ public class CadastrarMoto extends AppCompatActivity {
         String marca = editTextMarca.getText().toString();
         String placa = editTextPlaca.getText().toString();
 
-        Moto moto = new Moto(modelo, placa, marca, ano);
+        Moto moto = new Moto();
 
+        moto.setModelo(modelo);
+        moto.setMarca(marca);
+        moto.setPlaca(placa);
+        moto.setAno(ano);
         try {
 
             database.motoDao().insert(moto);

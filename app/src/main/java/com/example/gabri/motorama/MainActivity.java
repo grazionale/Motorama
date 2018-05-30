@@ -12,6 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,12 +33,17 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-/*****/
-        private ArrayAdapter<Moto> listaAdapterMotos;
-        private ArrayAdapter<String> listaAdapterMotosEstatico;
-        private ListView listViewMotos;
-        private TextView emptyText;
+    /*****/
+    private ArrayAdapter<Moto> listaAdapterMotos;
+    private ArrayAdapter<String> listaAdapterMotosEstatico;
+    private ListView listViewMotos;
+    private TextView emptyText;
     /******/
+
+    public static final String MODO = "MODO";
+    public static final String ID = "ID";
+    public static final int NOVO = 1;
+    public static final int ALTERAR = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,16 +75,27 @@ public class MainActivity extends AppCompatActivity
         // ***** //
 
         listViewMotos = findViewById(R.id.listViewMotos);
-        emptyText = (TextView)findViewById(android.R.id.empty);
+        emptyText = (TextView) findViewById(android.R.id.empty);
         listViewMotos.setEmptyView(emptyText);
 
         //listarMotosEstatico();
 
         listarMotos();
 
+        listViewMotos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Moto moto = (Moto) parent.getItemAtPosition(position);
+
+                abrirMotoSelecionada(moto);
+            }
+        });
+
     }
+
     //******************///
-    private void listarMotosEstatico(){
+    private void listarMotosEstatico() {
         ArrayList<String> lista = new ArrayList<>();
 
         lista.add("Moto1");
@@ -88,7 +106,7 @@ public class MainActivity extends AppCompatActivity
         listViewMotos.setAdapter(listaAdapterMotos);
     }
 
-    private void listarMotos(){
+    private void listarMotos() {
         MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
         List<Moto> lista = database.motoDao().queryAll();
@@ -99,15 +117,14 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    private void abrirMotoSelecionada(Moto moto) {
+        Intent intent = new Intent(this, CadastrarMoto.class);
 
+        intent.putExtra(MODO, ALTERAR);
+        intent.putExtra(ID, moto.getId());
 
-
-
-
-
-
-
-
+        startActivityForResult(intent, ALTERAR);
+    }
 
 
     // ****************//
@@ -153,9 +170,9 @@ public class MainActivity extends AppCompatActivity
             ChamaTelaMeusVeiculos();
         } else if (id == R.id.nav_informacoes) {
             ChamaTelaSobre();
-        } else if (id == R.id.nav_detalhes){
+        } else if (id == R.id.nav_detalhes) {
             ChamaTelaDetalhes();
-        } else if (id == R.id.nav_meus_gastos){
+        } else if (id == R.id.nav_meus_gastos) {
             ChamaTelaMeusGastos();
         }
 
@@ -164,7 +181,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    public void ChamaTelaCadastrarMoto(){
+    public void ChamaTelaCadastrarMoto() {
         Intent intent = new Intent(this, CadastrarMoto.class);
         startActivity(intent);
     }
@@ -185,7 +202,7 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void ChamaTelaMeusGastos(){
+    public void ChamaTelaMeusGastos() {
         Intent intent = new Intent(this, MeusGastos.class);
         startActivity(intent);
     }
