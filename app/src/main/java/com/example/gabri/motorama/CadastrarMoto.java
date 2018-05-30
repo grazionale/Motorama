@@ -96,22 +96,31 @@ public class CadastrarMoto extends AppCompatActivity {
         String marca = editTextMarca.getText().toString();
         String placa = editTextPlaca.getText().toString();
 
-        Moto moto = new Moto();
-
         moto.setModelo(modelo);
         moto.setMarca(marca);
         moto.setPlaca(placa);
         moto.setAno(ano);
-        try {
-
+        System.out.println("Moto Update: " + moto);
+        if(modo == NOVO){
+            System.out.println("Entrou SAVE");
             database.motoDao().insert(moto);
-            //setResult(Activity.RESULT_OK);
-            Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
-            finish();
-
-        } catch(Exception e){
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        } else {
+            System.out.println("Entrou UPDATE");
+            database.motoDao().update(moto);
         }
+
+        setResult(Activity.RESULT_OK);
+        finish();
+//        try {
+//
+//            database.motoDao().insert(moto);
+//            setResult(Activity.RESULT_OK);
+//            //Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
+//            finish();
+//
+//        } catch(Exception e){
+//            System.out.println("GetMessage: " + e.getMessage());
+//        }
 
 
     }
