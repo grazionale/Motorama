@@ -40,10 +40,13 @@ public class MainActivity extends AppCompatActivity
     private TextView emptyText;
     /******/
 
-    public static final String MODO = "MODO";
-    public static final String ID = "ID";
-    public static final int NOVO = 1;
-    public static final int ALTERAR = 2;
+//    public static final String MODO = "MODO";
+//    public static final String ID = "ID";
+//    public static final int NOVO = 1;
+//    public static final int ALTERAR = 2;
+
+    private static final int REQUEST_NOVA_MOTO    = 1;
+    private static final int REQUEST_ALTERAR_MOTO = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +91,8 @@ public class MainActivity extends AppCompatActivity
 
                 Moto moto = (Moto) parent.getItemAtPosition(position);
 
-                abrirMotoSelecionada(moto);
+                CadastrarMoto.alterarMoto(MainActivity.this, REQUEST_ALTERAR_MOTO, moto);
+                //abrirMotoSelecionada(moto);
             }
         });
 
@@ -117,15 +121,46 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void abrirMotoSelecionada(Moto moto) {
-        Intent intent = new Intent(this, CadastrarMoto.class);
+//    private void abrirMotoSelecionada(Moto moto) {
+//        Intent intent = new Intent(this, CadastrarMoto.class);
+//
+//        intent.putExtra(MODO, ALTERAR);
+//        intent.putExtra(ID, moto.getId());
+//
+//        startActivityForResult(intent, ALTERAR);
+//    }
 
-        intent.putExtra(MODO, ALTERAR);
-        intent.putExtra(ID, moto.getId());
 
-        startActivityForResult(intent, ALTERAR);
+    public void ChamaTelaCadastrarMoto() {
+//        Intent intent = new Intent(this, CadastrarMoto.class);
+//
+//        intent.putExtra(MODO, NOVO);
+//
+//        startActivityForResult(intent, NOVO);
+
+        CadastrarMoto.novaMoto(this, REQUEST_NOVA_MOTO);
     }
 
+    private void ChamaTelaSobre() {
+        Intent intent = new Intent(this, Sobre.class);
+        startActivity(intent);
+    }
+
+    private void ChamaTelaMeusVeiculos() {
+        Intent intent = new Intent(this, MeusVeiculos.class);
+        startActivity(intent);
+    }
+
+    private void ChamaTelaDetalhes() {
+        Intent intent = new Intent(this, Detalhes.class);
+        startActivity(intent);
+    }
+
+
+    public void ChamaTelaMeusGastos() {
+        Intent intent = new Intent(this, MeusGastos.class);
+        startActivity(intent);
+    }
 
     // ****************//
     @Override
@@ -179,32 +214,6 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void ChamaTelaCadastrarMoto() {
-        Intent intent = new Intent(this, CadastrarMoto.class);
-        startActivity(intent);
-    }
-
-    private void ChamaTelaSobre() {
-        Intent intent = new Intent(this, Sobre.class);
-        startActivity(intent);
-    }
-
-    private void ChamaTelaMeusVeiculos() {
-        Intent intent = new Intent(this, MeusVeiculos.class);
-        startActivity(intent);
-    }
-
-    private void ChamaTelaDetalhes() {
-        Intent intent = new Intent(this, Detalhes.class);
-        startActivity(intent);
-    }
-
-
-    public void ChamaTelaMeusGastos() {
-        Intent intent = new Intent(this, MeusGastos.class);
-        startActivity(intent);
     }
 
 }
