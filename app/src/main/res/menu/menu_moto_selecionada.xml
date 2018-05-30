@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_moto_alterar"
+        android:icon="@android:drawable/ic_menu_save"
+        android:title="@string/alterar"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_moto_deletar"
+        android:icon="@android:drawable/ic_menu_delete"
+        android:title="@string/deletar"
+        app:showAsAction="ifRoom|withText" />
+</menu>

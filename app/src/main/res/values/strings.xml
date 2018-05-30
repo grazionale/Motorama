@@ -32,4 +32,6 @@
     <string name="moto">Moto</string>
     <string name="valor">Valor R$</string>
     <string name="data">Data</string>
+    <string name="deletar">Deletar</string>
+    <string name="alterar">Alterar</string>
 </resources>
