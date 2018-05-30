@@ -30,4 +30,6 @@
     <string name="odometro_km">Odômetro (KM)</string>
     <string name="ocorrencia">Ocorrência</string>
     <string name="moto">Moto</string>
+    <string name="valor">Valor R$</string>
+    <string name="data">Data</string>
 </resources>

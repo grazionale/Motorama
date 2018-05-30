@@ -2,11 +2,14 @@ package com.example.gabri.motorama;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.gabri.modelos.Gasto;
 import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
 
@@ -16,11 +19,13 @@ import java.util.List;
 public class CadastrarGasto extends AppCompatActivity {
 
     Spinner spinnerMotos;
-    EditText editTextDescricao, editTextComentario, editTextKm;
+    EditText editTextDescricao, editTextComentario, editTextKm, editTextValor, editTextData;
     Spinner spinnerOcorrencia;
     Button btnAdcGasto;
 
     String[] itemsOcorrencia = new String[]{"Bateria", "Cambio", "Direção", "Elétrica", "Filtros", "Iluminação", "Motor", "Pneus", "Radiador", "Óleo", "Outros"};
+
+    public MotoramaDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class CadastrarGasto extends AppCompatActivity {
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextComentario = (EditText) findViewById(R.id.editTextComentario);
         editTextKm = (EditText) findViewById(R.id.editTextKm);
+        editTextValor = (EditText) findViewById(R.id.editTextValor);
+        editTextData = (EditText) findViewById(R.id.editTextData);
 
         spinnerMotos = (Spinner) findViewById(R.id.spinnerMotos);
         spinnerOcorrencia = (Spinner) findViewById(R.id.spinnerOcorrencia);
@@ -48,6 +55,13 @@ public class CadastrarGasto extends AppCompatActivity {
 
         ArrayAdapter<String> adapterOcorrencia = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemsOcorrencia);
         spinnerOcorrencia.setAdapter(adapterOcorrencia);
+
+        btnAdcGasto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cadastrarGasto();
+            }
+        });
 
     }
 
@@ -63,5 +77,32 @@ public class CadastrarGasto extends AppCompatActivity {
         }
 
         return modelos;
+    }
+
+    public void cadastrarGasto(){
+        database = MotoramaDatabase.getDatabase(this);
+
+        String moto = spinnerMotos.getSelectedItem().toString();
+        String descricao = editTextDescricao.getText().toString();
+        String comentario = editTextComentario.getText().toString();
+        int km = Integer.parseInt(editTextKm.getText().toString());
+        String ocorrencia = spinnerOcorrencia.getSelectedItem().toString();
+        double valor = Double.parseDouble(editTextValor.getText().toString());
+        String data = editTextData.getText().toString();
+
+
+        Gasto gasto = new Gasto();
+
+        gasto.setMoto(moto);
+        gasto.setDescricao(descricao);
+        gasto.setComentario(comentario);
+        gasto.setKm(km);
+        gasto.setOcorrencia(ocorrencia);
+        gasto.setValor(valor);
+        gasto.setData(data);
+
+        database.gastoDao().insert(gasto);
+        Toast.makeText(this, "Gasto inserido com Sucesso !!", Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -14,7 +14,7 @@ public class Gasto {
     private int id;
 
     @ColumnInfo(name = "moto")
-    private Moto moto;
+    private String moto;
 
     @ColumnInfo(name = "descricao")
     private String descricao;
@@ -93,11 +93,11 @@ public class Gasto {
         this.ocorrencia = ocorrencia;
     }
 
-    public Moto getMoto() {
+    public String getMoto() {
         return moto;
     }
 
-    public void setMoto(Moto moto) {
+    public void setMoto(String moto) {
         this.moto = moto;
     }
 
