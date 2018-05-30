@@ -1,10 +1,12 @@
 package com.example.gabri.motorama;
 
+import android.app.DatePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -14,6 +16,7 @@ import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class CadastrarGasto extends AppCompatActivity {
@@ -24,6 +27,9 @@ public class CadastrarGasto extends AppCompatActivity {
     Button btnAdcGasto;
 
     String[] itemsOcorrencia = new String[]{"Bateria", "Cambio", "Direção", "Elétrica", "Filtros", "Iluminação", "Motor", "Pneus", "Radiador", "Óleo", "Outros"};
+
+    Calendar mCurrentDate;
+    int dia, mes, ano;
 
     public MotoramaDatabase database;
 
@@ -60,6 +66,29 @@ public class CadastrarGasto extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cadastrarGasto();
+            }
+        });
+
+        //////////////// Date Pickker////////////////
+
+        mCurrentDate = Calendar.getInstance();
+
+        ano = mCurrentDate.get(Calendar.YEAR);
+        mes = mCurrentDate.get(Calendar.MONTH);
+        dia = mCurrentDate.get(Calendar.DAY_OF_MONTH);
+        mes = mes + 1;
+        editTextData.setText(dia + "/" + mes + "/" + ano);
+        editTextData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(CadastrarGasto.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                        monthOfYear = monthOfYear + 1;
+                        editTextData.setText(dayOfMonth + "/" + monthOfYear + "/" + year);
+                    }
+                }, ano, mes, dia);
+                datePickerDialog.show();
             }
         });
 
