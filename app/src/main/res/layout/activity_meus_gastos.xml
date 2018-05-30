@@ -14,7 +14,7 @@
         android:clickable="true"
         app:fabSize="normal"
         app:layout_anchor="@+id/listViewGastos"
-        app:layout_anchorGravity="bottom|center"
+        app:layout_anchorGravity="right|bottom"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <ListView
@@ -25,6 +25,7 @@
         android:id="@+id/listViewGastos" >
 
     </ListView>
+
 
 
 

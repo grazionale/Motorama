@@ -22,4 +22,12 @@
     <string name="ano">Ano</string>
     <string name="nova_moto">Nova Moto</string>
     <string name="adicionar_gasto">Adicionar</string>
+    <string name="descricao">Descrição</string>
+    <string name="troca_de_oleo">Troca de óleo</string>
+    <string name="comentario">Comentário</string>
+    <string name="foi_troca_o_oleo_do_motor">Foi trocado o óleo do motor</string>
+    <string name="odometro">Odômetro</string>
+    <string name="odometro_km">Odômetro (KM)</string>
+    <string name="ocorrencia">Ocorrência</string>
+    <string name="moto">Moto</string>
 </resources>

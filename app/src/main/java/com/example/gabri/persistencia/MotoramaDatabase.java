@@ -5,14 +5,16 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.example.gabri.modelos.Gasto;
 import com.example.gabri.modelos.Moto;
 
-@Database(entities = {Moto.class}, version = 8)
+@Database(entities = {Moto.class, Gasto.class}, version = 9)
 public abstract class MotoramaDatabase extends RoomDatabase {
 
     private static MotoramaDatabase instance;
 
     public abstract MotoDao motoDao();
+    public abstract GastoDao gastoDao();
 
     public static MotoramaDatabase getDatabase(final Context context){
 
@@ -28,7 +30,7 @@ public abstract class MotoramaDatabase extends RoomDatabase {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context,
                             MotoramaDatabase.class,
-                            "pessoas.db").allowMainThreadQueries().build();
+                            "motorama.db").allowMainThreadQueries().build();
                 }
             }
         }
