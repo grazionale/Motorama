@@ -1,6 +1,8 @@
 package com.example.gabri.motorama;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +34,14 @@ public class CadastrarGasto extends AppCompatActivity {
     int dia, mes, ano;
 
     public MotoramaDatabase database;
+
+    private int modo;
+    private Gasto gasto;
+
+    public static final String MODO    = "MODO";
+    public static final String ID      = "ID";
+    public static final int    NOVO    = 1;
+    public static final int    ALTERAR = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +102,35 @@ public class CadastrarGasto extends AppCompatActivity {
             }
         });
 
+        ///////////////////////////////
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+
+        modo = bundle.getInt(MODO);
+
+        if(modo == ALTERAR){
+            System.out.println("ENTROU ALTERAR GASTO");
+            int id = bundle.getInt(ID);
+            System.out.println("ID GASTO: " + id);
+            MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+            gasto = database.gastoDao().queryForId(id);
+            System.out.println("GASTO: " + gasto);
+
+            editTextDescricao.setText(gasto.getDescricao());
+            editTextComentario.setText(gasto.getComentario());
+            editTextData.setText(gasto.getData());
+            editTextKm.setText(gasto.getKm() + "");
+            editTextValor.setText(gasto.getValor() + "");
+            btnAdcGasto.setText("Alterar");
+
+            setTitle(getString(R.string.alterar_despesa));
+
+        } else {
+            System.out.println("ENTROU ADICIONAR GASTO");
+            gasto = new Gasto();
+            setTitle(getString(R.string.novo_gasto));
+        }
+
     }
 
     public List listarNomeMotos(){
@@ -119,9 +158,6 @@ public class CadastrarGasto extends AppCompatActivity {
         double valor = Double.parseDouble(editTextValor.getText().toString());
         String data = editTextData.getText().toString();
 
-
-        Gasto gasto = new Gasto();
-
         gasto.setMoto(moto);
         gasto.setDescricao(descricao);
         gasto.setComentario(comentario);
@@ -130,8 +166,30 @@ public class CadastrarGasto extends AppCompatActivity {
         gasto.setValor(valor);
         gasto.setData(data);
 
-        database.gastoDao().insert(gasto);
-        Toast.makeText(this, "Gasto inserido com Sucesso !!", Toast.LENGTH_SHORT).show();
+        if(modo == NOVO){
+            database.gastoDao().insert(gasto);
+            Toast.makeText(this, "Gasto inserido com Sucesso !!", Toast.LENGTH_SHORT).show();
+        } else {
+            database.gastoDao().update(gasto);
+            Toast.makeText(this, "Gasto alteardo com Sucesso !!", Toast.LENGTH_SHORT).show();
+        }
+        setResult(Activity.RESULT_OK);
+        finish();
 
+
+
+    }
+
+    public static void novoGasto(Activity activity, int requestCode){
+        Intent intent = new Intent(activity, CadastrarGasto.class);
+        intent.putExtra(MODO, NOVO);
+        activity.startActivityForResult(intent, NOVO);
+    }
+
+    public static void alterarGasto(Activity activity, int requestCode, Gasto gasto){
+        Intent intent = new Intent(activity, CadastrarGasto.class);
+        intent.putExtra(MODO, ALTERAR);
+        intent.putExtra(ID, gasto.getId());
+        activity.startActivityForResult(intent, NOVO);
     }
 }

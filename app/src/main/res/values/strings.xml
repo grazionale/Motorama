@@ -33,5 +33,8 @@
     <string name="valor">Valor R$</string>
     <string name="data">Data</string>
     <string name="deletar">Deletar</string>
+    <string name="novo_gasto">Novo Gasto</string>
+    <string name="alterar_moto">Alterar Moto</string>
     <string name="alterar">Alterar</string>
+    <string name="alterar_despesa">Alterar Despesa</string>
 </resources>

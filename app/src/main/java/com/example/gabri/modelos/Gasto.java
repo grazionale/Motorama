@@ -103,15 +103,6 @@ public class Gasto {
 
     @Override
     public String toString() {
-        return "Gasto{" +
-                "id=" + id +
-                ", moto=" + moto +
-                ", descricao='" + descricao + '\'' +
-                ", comentario='" + comentario + '\'' +
-                ", km=" + km +
-                ", valor=" + valor +
-                ", data='" + data + '\'' +
-                ", ocorrencia='" + ocorrencia + '\'' +
-                '}';
+        return id + " | " + moto + " | " + descricao  + " | " + comentario + " | " + km + " | " + valor + " | " + data + '\'' + " | " + ocorrencia;
     }
 }

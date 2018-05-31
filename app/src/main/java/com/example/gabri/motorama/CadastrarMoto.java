@@ -70,12 +70,13 @@ public class CadastrarMoto extends AppCompatActivity {
             moto = database.motoDao().queryForId(id);
             System.out.println("Moto: " + moto);
 
+
             editTextMarca.setText(moto.getMarca());
             editTextModelo.setText(moto.getModelo());
             editTextAno.setText(moto.getAno() + "");
             editTextPlaca.setText(moto.getPlaca());
-            btnCadastrar.setText("Alterar");
-            setTitle("Alterar Moto");
+            btnCadastrar.setText(R.string.alterar);
+            setTitle(getString(R.string.alterar_moto));
 
         } else{
             System.out.println("ABRIU ELSE");
@@ -102,11 +103,13 @@ public class CadastrarMoto extends AppCompatActivity {
         moto.setAno(ano);
         System.out.println("Moto Update: " + moto);
         if(modo == NOVO){
-            System.out.println("Entrou SAVE");
+            //System.out.println("Entrou SAVE");
             database.motoDao().insert(moto);
+            Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
         } else {
-            System.out.println("Entrou UPDATE");
+            //System.out.println("Entrou UPDATE");
             database.motoDao().update(moto);
+            Toast.makeText(this, "Moto alterada com Sucesso !!", Toast.LENGTH_SHORT).show();
         }
 
         setResult(Activity.RESULT_OK);
@@ -126,21 +129,15 @@ public class CadastrarMoto extends AppCompatActivity {
     }
 
     public static void novaMoto(Activity activity, int requestCode){
-
         Intent intent = new Intent(activity, CadastrarMoto.class);
-
         intent.putExtra(MODO, NOVO);
-
         activity.startActivityForResult(intent, NOVO);
     }
 
     public static void alterarMoto(Activity activity, int requestCode, Moto moto){
-
         Intent intent = new Intent(activity, CadastrarMoto.class);
-
         intent.putExtra(MODO, ALTERAR);
         intent.putExtra(ID, moto.getId());
-
         activity.startActivityForResult(intent, ALTERAR);
     }
 }

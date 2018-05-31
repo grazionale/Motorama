@@ -8,7 +8,7 @@ import android.content.Context;
 import com.example.gabri.modelos.Gasto;
 import com.example.gabri.modelos.Moto;
 
-@Database(entities = {Moto.class, Gasto.class}, version = 12, exportSchema = false)
+@Database(entities = {Moto.class, Gasto.class}, version = 14, exportSchema = false)
 public abstract class MotoramaDatabase extends RoomDatabase {
 
     private static MotoramaDatabase instance;

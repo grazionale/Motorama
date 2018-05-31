@@ -5,11 +5,13 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gabri.modelos.Gasto;
+import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
 
 import java.util.List;
@@ -20,6 +22,8 @@ public class MeusGastos extends AppCompatActivity {
     private ListView listViewGastos;
     private TextView emptyText;
 
+    private static final int REQUEST_NOVO_GASTO   = 1;
+    private static final int REQUEST_ALTERAR_GASTO = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,17 @@ public class MeusGastos extends AppCompatActivity {
 
 
         listarGastos();
+
+        listViewGastos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Gasto gasto = (Gasto) parent.getItemAtPosition(position);
+
+                CadastrarGasto.alterarGasto(MeusGastos.this, REQUEST_ALTERAR_GASTO, gasto);
+                //abrirMotoSelecionada(moto);
+            }
+        });
     }
 
     private void listarGastos(){
@@ -54,7 +69,8 @@ public class MeusGastos extends AppCompatActivity {
     }
 
     public void ChamaTelaCadastrarGastos(){
-        Intent intent = new Intent(this, CadastrarGasto.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, CadastrarGasto.class);
+//        startActivity(intent);
+        CadastrarGasto.novoGasto(this, REQUEST_NOVO_GASTO);
     }
 }

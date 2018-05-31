@@ -137,7 +137,6 @@ public class MainActivity extends AppCompatActivity
 //        intent.putExtra(MODO, NOVO);
 //
 //        startActivityForResult(intent, NOVO);
-
         CadastrarMoto.novaMoto(this, REQUEST_NOVA_MOTO);
     }
 
