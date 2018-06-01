@@ -8,8 +8,8 @@
         android:title="@string/alterar"
         app:showAsAction="ifRoom|withText" />
     <item
-        android:id="@+id/menu_moto_deletar"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/deletar"
+        android:id="@+id/menu_moto_cancelar"
+        android:icon="@android:drawable/ic_menu_close_clear_cancel"
+        android:title="@android:string/cancel"
         app:showAsAction="ifRoom|withText" />
 </menu>

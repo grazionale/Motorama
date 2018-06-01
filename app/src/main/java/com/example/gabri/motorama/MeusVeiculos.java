@@ -25,6 +25,7 @@ public class MeusVeiculos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_veiculos);
 
+        setTitle(getString(R.string.meus_veiculos));
 
         listViewMotos = findViewById(R.id.listViewMotos);
         emptyText = (TextView)findViewById(android.R.id.empty);

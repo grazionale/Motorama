@@ -15,6 +15,8 @@ public class Sobre extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sobre);
+
+        setTitle(getString(R.string.sobre_o_motorama));
     }
 
 

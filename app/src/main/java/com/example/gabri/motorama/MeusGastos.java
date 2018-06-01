@@ -29,7 +29,7 @@ public class MeusGastos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_gastos);
-
+        setTitle(getString(R.string.meus_gastos));
         listViewGastos = findViewById(R.id.listViewGastos);
 
         listViewGastos.setEmptyView(emptyText);

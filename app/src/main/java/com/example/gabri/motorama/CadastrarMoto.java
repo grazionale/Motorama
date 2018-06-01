@@ -1,24 +1,19 @@
 package com.example.gabri.motorama;
 
 import android.app.Activity;
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.drm.DrmStore;
-import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.gabri.modelos.Moto;
-import com.example.gabri.motorama.R;
 import com.example.gabri.persistencia.MotoramaDatabase;
-
-import java.security.Principal;
 
 public class CadastrarMoto extends AppCompatActivity {
 
@@ -139,5 +134,32 @@ public class CadastrarMoto extends AppCompatActivity {
         intent.putExtra(MODO, ALTERAR);
         intent.putExtra(ID, moto.getId());
         activity.startActivityForResult(intent, ALTERAR);
+    }
+
+    private void cancelar(){
+        setResult(Activity.RESULT_CANCELED);
+        finish();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_moto_detalhes, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_moto_alterar: {
+                cadastrarMoto();
+                return true;
+            }
+            case R.id.menu_moto_cancelar: {
+                cancelar();
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

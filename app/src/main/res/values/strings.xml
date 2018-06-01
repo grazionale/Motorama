@@ -37,4 +37,8 @@
     <string name="alterar_moto">Alterar Moto</string>
     <string name="alterar">Alterar</string>
     <string name="alterar_despesa">Alterar Despesa</string>
+    <string name="meus_veiculos">Meus Veículos</string>
+    <string name="meus_gastos">Meus Gastos</string>
+    <string name="sobre_o_motorama">Sobre o Motorama</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
