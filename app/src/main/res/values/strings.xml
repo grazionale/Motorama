@@ -41,4 +41,9 @@
     <string name="meus_gastos">Meus Gastos</string>
     <string name="sobre_o_motorama">Sobre o Motorama</string>
     <string name="cancelar">Cancelar</string>
+    <string name="apagar">Apagar</string>
+    <string name="editar">Editar</string>
+    <string name="confirmacao">Confirmação</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 </resources>

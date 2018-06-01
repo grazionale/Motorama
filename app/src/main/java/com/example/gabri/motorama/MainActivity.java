@@ -1,8 +1,10 @@
 package com.example.gabri.motorama;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.view.ContextMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -26,6 +28,7 @@ import com.example.gabri.motorama.MeusVeiculos;
 import com.example.gabri.motorama.R;
 import com.example.gabri.motorama.Sobre;
 import com.example.gabri.persistencia.MotoramaDatabase;
+import com.example.gabri.utils.UtilsGUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        registerForContextMenu(listViewMotos);
     }
 
     //******************///
@@ -163,6 +167,31 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+
+    private void excluirMoto(final Moto moto){
+        String mensagem = "Deseja realmente apagar: " + "\n" + moto.getModelo();
+
+        DialogInterface.OnClickListener listener =
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        switch(which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                MotoramaDatabase database = MotoramaDatabase.getDatabase(MainActivity.this);
+                                database.motoDao().delete(moto);
+                                listaAdapterMotos.remove(moto);
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                };
+
+        UtilsGUI.confirmaAcao(this, mensagem, listener);
+    }
+
     // ****************//
     @Override
     public void onBackPressed() {
@@ -217,4 +246,35 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.menu_moto_selecionada, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info;
+
+        info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        Moto moto = (Moto) listViewMotos.getItemAtPosition(info.position);
+
+        switch (item.getItemId()){
+
+            case R.id.menu_moto_editar: {
+                CadastrarMoto.alterarMoto(this, REQUEST_ALTERAR_MOTO, moto);
+                return true;
+            }
+
+            case R.id.menu_moto_apagar: {
+                excluirMoto(moto);
+                return true;
+            }
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
 }
