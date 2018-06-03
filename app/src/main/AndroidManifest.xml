@@ -40,7 +40,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gabri.motorama.MainActivity" />
         </activity>
-        <activity android:name=".Detalhes" />
+        <activity
+            android:name=".Configurações"
+            android:parentActivityName="com.example.gabri.motorama.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gabri.motorama.MainActivity" />
+        </activity>
 
         <activity
             android:name=".CadastrarGasto"

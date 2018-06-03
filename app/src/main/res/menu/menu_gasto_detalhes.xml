@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/menu_gasto_alterar"
+        android:id="@+id/menu_gasto_alterar_salvar"
         android:icon="@android:drawable/ic_menu_save"
         android:title="@string/alterar"
         app:showAsAction="ifRoom|withText" />

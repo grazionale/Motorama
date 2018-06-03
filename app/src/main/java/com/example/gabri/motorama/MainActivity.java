@@ -1,5 +1,6 @@
 package com.example.gabri.motorama;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,21 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.gabri.modelos.Moto;
-import com.example.gabri.motorama.CadastrarMoto;
-import com.example.gabri.motorama.Detalhes;
-import com.example.gabri.motorama.MeusGastos;
-import com.example.gabri.motorama.MeusVeiculos;
-import com.example.gabri.motorama.R;
-import com.example.gabri.motorama.Sobre;
 import com.example.gabri.persistencia.MotoramaDatabase;
-import com.example.gabri.utils.UtilsGUI;
+import com.example.gabri.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,6 +110,7 @@ public class MainActivity extends AppCompatActivity
         listViewMotos.setAdapter(listaAdapterMotos);
     }
 
+
     private void listarMotos() {
         MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
@@ -135,6 +130,15 @@ public class MainActivity extends AppCompatActivity
 //
 //        startActivityForResult(intent, ALTERAR);
 //    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if ((requestCode == REQUEST_NOVA_MOTO || requestCode == REQUEST_ALTERAR_MOTO)
+                && resultCode == Activity.RESULT_OK){
+            listarMotos();
+        }
+    }
 
 
     public void ChamaTelaCadastrarMoto() {
@@ -157,7 +161,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void ChamaTelaDetalhes() {
-        Intent intent = new Intent(this, Detalhes.class);
+        Intent intent = new Intent(this, Configurações.class);
         startActivity(intent);
     }
 
@@ -167,6 +171,10 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
+    public void ChamaTelaConfiguracoes() {
+        Intent intent = new Intent(this, Configurações.class);
+        startActivity(intent);
+    }
 
     private void excluirMoto(final Moto moto){
         String mensagem = "Deseja realmente apagar: " + "\n" + moto.getModelo();
@@ -189,7 +197,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 };
 
-        UtilsGUI.confirmaAcao(this, mensagem, listener);
+        Utils.confirmaAcao(this, mensagem, listener);
     }
 
     // ****************//
@@ -219,10 +227,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            ChamaTelaConfiguracoes();
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

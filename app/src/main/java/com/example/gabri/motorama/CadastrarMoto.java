@@ -28,8 +28,6 @@ public class CadastrarMoto extends AppCompatActivity {
     public static final int    NOVO    = 1;
     public static final int    ALTERAR = 2;
 
-    public static MotoramaDatabase database;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +83,8 @@ public class CadastrarMoto extends AppCompatActivity {
 
     public void cadastrarMoto(){
        // Toast.makeText(this, "PEGOU", Toast.LENGTH_SHORT).show();
-        database = MotoramaDatabase.getDatabase(this);
+
+        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
         int ano = Integer.parseInt(editTextAno.getText().toString());
         String modelo = editTextModelo.getText().toString();
@@ -100,11 +99,11 @@ public class CadastrarMoto extends AppCompatActivity {
         if(modo == NOVO){
             //System.out.println("Entrou SAVE");
             database.motoDao().insert(moto);
-            Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
         } else {
             //System.out.println("Entrou UPDATE");
             database.motoDao().update(moto);
-            Toast.makeText(this, "Moto alterada com Sucesso !!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Moto alterada com Sucesso !!", Toast.LENGTH_SHORT).show();
         }
 
         setResult(Activity.RESULT_OK);
@@ -150,7 +149,7 @@ public class CadastrarMoto extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_moto_alterar: {
+            case R.id.menu_moto_alterar_salvar: {
                 cadastrarMoto();
                 return true;
             }

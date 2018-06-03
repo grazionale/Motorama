@@ -6,10 +6,8 @@ import android.support.v7.app.AlertDialog;
 
 import com.example.gabri.motorama.R;
 
-public class UtilsGUI {
-    public static void confirmaAcao(Context contexto,
-                                    String mensagem,
-                                    DialogInterface.OnClickListener listener){
+public class Utils {
+    public static void confirmaAcao(Context contexto, String mensagem, DialogInterface.OnClickListener listener){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(contexto);
 

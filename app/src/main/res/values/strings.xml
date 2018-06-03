@@ -46,4 +46,9 @@
     <string name="confirmacao">Confirmação</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
+    <string name="configuracoes">Configurações</string>
+    <string name="idioma">Idioma</string>
+    <string name="portugues">Português</string>
+    <string name="ingles">Inglês</string>
+    <string name="salvar">Salvar</string>
 </resources>

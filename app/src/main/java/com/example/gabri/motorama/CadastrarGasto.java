@@ -35,8 +35,6 @@ public class CadastrarGasto extends AppCompatActivity {
     Calendar mCurrentDate;
     int dia, mes, ano;
 
-    public MotoramaDatabase database;
-
     private int modo;
     private Gasto gasto;
 
@@ -150,7 +148,7 @@ public class CadastrarGasto extends AppCompatActivity {
     }
 
     public void cadastrarGasto(){
-        database = MotoramaDatabase.getDatabase(this);
+        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
         String moto = spinnerMotos.getSelectedItem().toString();
         String descricao = editTextDescricao.getText().toString();
@@ -177,9 +175,6 @@ public class CadastrarGasto extends AppCompatActivity {
         }
         setResult(Activity.RESULT_OK);
         finish();
-
-
-
     }
 
     public static void novoGasto(Activity activity, int requestCode){
@@ -209,7 +204,7 @@ public class CadastrarGasto extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
-            case R.id.menu_gasto_alterar: {
+            case R.id.menu_gasto_alterar_salvar: {
                 cadastrarGasto();
                 return true;
             }
