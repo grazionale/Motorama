@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,7 +54,6 @@ public class CadastrarGasto extends AppCompatActivity {
 //        if(actionBar != null){
 //            actionBar.setDisplayHomeAsUpEnabled(true);
 //        }
-
 
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextComentario = (EditText) findViewById(R.id.editTextComentario);
@@ -130,7 +130,6 @@ public class CadastrarGasto extends AppCompatActivity {
             gasto = new Gasto();
             setTitle(getString(R.string.novo_gasto));
         }
-
     }
 
     public List listarNomeMotos(){
@@ -219,4 +218,5 @@ public class CadastrarGasto extends AppCompatActivity {
         }
 
     }
+
 }
