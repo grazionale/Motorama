@@ -7,30 +7,30 @@
         <item
             android:id="@+id/nav_meus_veiculos"
             android:icon="@drawable/ic_motorcycle_black_24dp"
-            android:title="Meus Veículos" />
+            android:title="@string/meus_veiculos" />
 
         <item
             android:id="@+id/nav_meus_gastos"
             android:icon="@drawable/ic_monetization_on_black_24dp"
-            android:title="Meus Gastos" />
+            android:title="@string/meus_gastos" />
 
     </group>
 
-    <item android:title="Configurações">
+    <item android:title="@string/configuracoes">
         <menu>
             <item
                 android:id="@+id/nav_informacoes"
                 android:icon="@drawable/ic_info_black_24dp"
-                android:title="Informações e Suporte" />
+                android:title="@string/informacoes_e_suporte" />
         </menu>
     </item>
 
-    <item android:title="Detalhes">
+    <item android:title="@string/detalhes">
         <menu>
             <item
                 android:id="@+id/nav_detalhes"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Detalhes" />
+                android:title="@string/detalhes" />
         </menu>
     </item>
 

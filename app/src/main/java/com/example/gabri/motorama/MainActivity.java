@@ -1,9 +1,13 @@
 package com.example.gabri.motorama;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.view.ContextMenu;
 import android.view.View;
@@ -26,24 +30,24 @@ import com.example.gabri.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import static com.example.gabri.motorama.Configurações.ARQUIVO;
+import static com.example.gabri.motorama.Configurações.IDIOMA;
+import static com.example.gabri.motorama.Configurações.OPCAO;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     /*****/
     private ArrayAdapter<Moto> listaAdapterMotos;
-    private ArrayAdapter<String> listaAdapterMotosEstatico;
     private ListView listViewMotos;
     private TextView emptyText;
     /******/
 
-//    public static final String MODO = "MODO";
-//    public static final String ID = "ID";
-//    public static final int NOVO = 1;
-//    public static final int ALTERAR = 2;
-
     private static final int REQUEST_NOVA_MOTO    = 1;
     private static final int REQUEST_ALTERAR_MOTO = 2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,10 @@ public class MainActivity extends AppCompatActivity
         setTitle(getString(R.string.meus_veiculos));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        getPreferenceLocale();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +88,6 @@ public class MainActivity extends AppCompatActivity
         emptyText = (TextView) findViewById(android.R.id.empty);
         listViewMotos.setEmptyView(emptyText);
 
-        //listarMotosEstatico();
-
         listarMotos();
 
         listViewMotos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,7 +97,6 @@ public class MainActivity extends AppCompatActivity
                 Moto moto = (Moto) parent.getItemAtPosition(position);
 
                 CadastrarMoto.alterarMoto(MainActivity.this, REQUEST_ALTERAR_MOTO, moto);
-                //abrirMotoSelecionada(moto);
             }
         });
 
@@ -99,17 +104,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     //******************///
-    private void listarMotosEstatico() {
-        ArrayList<String> lista = new ArrayList<>();
-
-        lista.add("Moto1");
-        lista.add("Moto2");
-
-        listaAdapterMotosEstatico = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
-
-        listViewMotos.setAdapter(listaAdapterMotos);
-    }
-
 
     private void listarMotos() {
         MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
@@ -122,14 +116,6 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-//    private void abrirMotoSelecionada(Moto moto) {
-//        Intent intent = new Intent(this, CadastrarMoto.class);
-//
-//        intent.putExtra(MODO, ALTERAR);
-//        intent.putExtra(ID, moto.getId());
-//
-//        startActivityForResult(intent, ALTERAR);
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -213,19 +199,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             ChamaTelaConfiguracoes();
         }
@@ -284,5 +264,25 @@ public class MainActivity extends AppCompatActivity
             default:
                 return super.onContextItemSelected(item);
         }
+    }
+
+
+
+    private void getPreferenceLocale() {
+        SharedPreferences shared = getSharedPreferences(ARQUIVO, Context.MODE_PRIVATE);
+        System.out.println("IDIOMA: " + IDIOMA);
+        System.out.println("OPCAO: " + OPCAO);
+        OPCAO = shared.getString(IDIOMA, OPCAO);
+        System.out.println("IDIOMA 2: " + IDIOMA);
+        System.out.println("OPCAO 2: " + OPCAO);
+        setLocale(OPCAO);
+    }
+
+    private void setLocale(String localeName) {
+        Locale locale = new Locale(localeName);
+        Locale.setDefault(locale);
+        Configuration config = getResources().getConfiguration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 }

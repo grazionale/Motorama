@@ -51,4 +51,6 @@
     <string name="portugues">Português</string>
     <string name="ingles">Inglês</string>
     <string name="salvar">Salvar</string>
+    <string name="informacoes_e_suporte">Informações e Suporte</string>
+    <string name="detalhes">Detalhes</string>
 </resources>
