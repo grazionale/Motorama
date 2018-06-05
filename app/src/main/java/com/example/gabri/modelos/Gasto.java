@@ -2,10 +2,15 @@ package com.example.gabri.modelos;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(tableName = "gasto")
+@Entity(tableName = "gasto",
+            foreignKeys = @ForeignKey(entity = Moto.class,
+            parentColumns = "id",
+            childColumns = "motoId"))
+
 public class Gasto {
 
     @ColumnInfo(name = "id")
@@ -33,6 +38,9 @@ public class Gasto {
 
     @ColumnInfo(name = "ocorrencia")
     private String ocorrencia;
+
+    @ColumnInfo(name = "motoId")
+    private int motoId;
 
     public Gasto() { }
 
@@ -99,6 +107,14 @@ public class Gasto {
 
     public void setMoto(String moto) {
         this.moto = moto;
+    }
+
+    public int getMotoId() {
+        return motoId;
+    }
+
+    public void setMotoId(int motoId) {
+        this.motoId = motoId;
     }
 
     @Override

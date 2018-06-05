@@ -44,6 +44,8 @@ public class CadastrarGasto extends AppCompatActivity {
     public static final int    NOVO    = 1;
     public static final int    ALTERAR = 2;
 
+    MotoramaDatabase database;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,9 @@ public class CadastrarGasto extends AppCompatActivity {
 
         btnAdcGasto = (Button) findViewById(R.id.btnCadastrarGasto);
 
-        ArrayAdapter<String> adapterMotos = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, listarNomeMotos());
+        List<Moto> listaDeMotos = database.motoDao().queryAll();
+
+        ArrayAdapter<Moto> adapterMotos = new ArrayAdapter<>(CadastrarGasto.this, android.R.layout.simple_list_item_1, listaDeMotos);
         spinnerMotos.setAdapter(adapterMotos);
 
         ArrayAdapter<String> adapterOcorrencia = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemsOcorrencia);
@@ -133,7 +137,7 @@ public class CadastrarGasto extends AppCompatActivity {
     }
 
     public List listarNomeMotos(){
-        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+        database = MotoramaDatabase.getDatabase(this);
 
         List<Moto> lista = database.motoDao().queryAll();
 
@@ -164,6 +168,16 @@ public class CadastrarGasto extends AppCompatActivity {
         gasto.setOcorrencia(ocorrencia);
         gasto.setValor(valor);
         gasto.setData(data);
+
+        Moto motoSpinner = (Moto) spinnerMotos.getSelectedItem();
+
+        System.out.println("MotoSpinner: " + motoSpinner);
+        if(motoSpinner != null){
+            System.out.println("Entrou set ID Moto no Gasto");
+            gasto.setMotoId(motoSpinner.getId());
+        } else {
+            System.out.println("Não entrou no set ID Moto no Gasto");
+        }
 
         if(modo == NOVO){
             database.gastoDao().insert(gasto);
