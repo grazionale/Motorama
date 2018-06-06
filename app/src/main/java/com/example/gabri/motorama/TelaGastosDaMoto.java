@@ -1,7 +1,6 @@
 package com.example.gabri.motorama;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,20 +10,17 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.gabri.modelos.Gasto;
-import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
 import com.example.gabri.utils.Utils;
 
 import java.util.List;
 
-public class MeusGastos extends AppCompatActivity {
+public class TelaGastosDaMoto extends AppCompatActivity {
 
-    private ArrayAdapter<Gasto> listaAdapterGastos;
-    private ListView listViewGastos;
-    private TextView emptyText;
+    private ArrayAdapter<Gasto> listaAdapterGastosDaMoto;
+    private ListView listViewGastosDaMoto;
 
     private static final int REQUEST_NOVO_GASTO   = 1;
     private static final int REQUEST_ALTERAR_GASTO = 2;
@@ -32,57 +28,55 @@ public class MeusGastos extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meus_gastos);
-        setTitle(getString(R.string.meus_gastos));
+        setContentView(R.layout.activity_tela_gastos_da_moto);
 
-        listViewGastos = findViewById(R.id.listViewGastos);
+        setTitle("Gasto da Moto");
 
-        listViewGastos.setEmptyView(emptyText);
+        listViewGastosDaMoto = findViewById(R.id.listViewGastosDaMoto);
 
-        listarGastos();
+        listarGastosDaMoto();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fapGastos);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fapGastosDaMoto = (FloatingActionButton) findViewById(R.id.fapGastosDaMoto);
+        fapGastosDaMoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ChamaTelaCadastrarGastos();
             }
         });
 
-
-
-
-        listViewGastos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewGastosDaMoto.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Gasto gasto = (Gasto) parent.getItemAtPosition(position);
 
-                CadastrarGasto.alterarGasto(MeusGastos.this, REQUEST_ALTERAR_GASTO, gasto);
-                //abrirMotoSelecionada(moto);
+                CadastrarGasto.alterarGasto(TelaGastosDaMoto.this, REQUEST_ALTERAR_GASTO, gasto);
             }
         });
 
-        registerForContextMenu(listViewGastos);
+        registerForContextMenu(listViewGastosDaMoto);
     }
 
-    private void listarGastos(){
-        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+    private void listarGastosDaMoto(){
+        Bundle extras = getIntent().getExtras();
 
-        List<Gasto> lista = database.gastoDao().queryAll();
+        if(extras == null){
+            System.out.println("DEU RUIM");
+        } else {
+            MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
-        listaAdapterGastos = new ArrayAdapter<Gasto>(this, android.R.layout.simple_list_item_1, lista);
+            List<Gasto> lista = database.gastoDao().queryForMotoId(extras.getInt("ID_MOTO_SELECIONADA"));
 
-        listViewGastos.setAdapter(listaAdapterGastos);
+            listaAdapterGastosDaMoto = new ArrayAdapter<Gasto>(this, android.R.layout.simple_list_item_1, lista);
+
+            listViewGastosDaMoto.setAdapter(listaAdapterGastosDaMoto);
+        }
 
     }
 
     public void ChamaTelaCadastrarGastos(){
-//        Intent intent = new Intent(this, CadastrarGasto.class);
-//        startActivity(intent);
         CadastrarGasto.novoGasto(this, REQUEST_NOVO_GASTO);
     }
-
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
@@ -96,7 +90,7 @@ public class MeusGastos extends AppCompatActivity {
 
         info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
 
-        Gasto gasto = (Gasto) listViewGastos.getItemAtPosition(info.position);
+        Gasto gasto = (Gasto) listViewGastosDaMoto.getItemAtPosition(info.position);
 
         switch (item.getItemId()){
 
@@ -125,9 +119,9 @@ public class MeusGastos extends AppCompatActivity {
 
                         switch(which){
                             case DialogInterface.BUTTON_POSITIVE:
-                                MotoramaDatabase database = MotoramaDatabase.getDatabase(MeusGastos.this);
+                                MotoramaDatabase database = MotoramaDatabase.getDatabase(TelaGastosDaMoto.this);
                                 database.gastoDao().delete(gasto);
-                                listaAdapterGastos.remove(gasto);
+                                listaAdapterGastosDaMoto.remove(gasto);
                                 break;
 
                             case DialogInterface.BUTTON_NEGATIVE:

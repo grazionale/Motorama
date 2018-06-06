@@ -96,7 +96,13 @@ public class MainActivity extends AppCompatActivity
 
                 Moto moto = (Moto) parent.getItemAtPosition(position);
 
-                CadastrarMoto.alterarMoto(MainActivity.this, REQUEST_ALTERAR_MOTO, moto);
+                chamaTelaGastoDaMoto(moto.getId());
+
+
+
+
+
+                //CadastrarMoto.alterarMoto(MainActivity.this, REQUEST_ALTERAR_MOTO, moto);
             }
         });
 
@@ -128,11 +134,6 @@ public class MainActivity extends AppCompatActivity
 
 
     public void ChamaTelaCadastrarMoto() {
-//        Intent intent = new Intent(this, CadastrarMoto.class);
-//
-//        intent.putExtra(MODO, NOVO);
-//
-//        startActivityForResult(intent, NOVO);
         CadastrarMoto.novaMoto(this, REQUEST_NOVA_MOTO);
     }
 
@@ -159,6 +160,15 @@ public class MainActivity extends AppCompatActivity
 
     public void ChamaTelaConfiguracoes() {
         Intent intent = new Intent(this, Configurações.class);
+        startActivity(intent);
+    }
+
+    public void chamaTelaGastoDaMoto(int idMoto) {
+        Intent intent = new Intent(this, TelaGastosDaMoto.class);
+
+        intent.putExtra("ID_MOTO_SELECIONADA", idMoto);
+        //activity.startActivityForResult(intent, ALTERAR);
+
         startActivity(intent);
     }
 

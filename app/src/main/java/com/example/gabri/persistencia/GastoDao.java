@@ -28,4 +28,7 @@ public interface GastoDao {
 
     @Query("SELECT * FROM gasto ORDER BY id ASC")
     public List<Gasto> queryAll();
+
+    @Query("SELECT * FROM gasto WHERE motoId = :id")
+    public List<Gasto> queryForMotoId(long id);
 }
