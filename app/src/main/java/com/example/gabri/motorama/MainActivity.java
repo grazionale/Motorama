@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void ChamaTelaMeusVeiculos() {
-        Intent intent = new Intent(this, MeusVeiculos.class);
+    private void ChamaTelaMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
@@ -220,7 +220,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_meus_veiculos) {
-            ChamaTelaMeusVeiculos();
+            ChamaTelaMainActivity();
         } else if (id == R.id.nav_informacoes) {
             ChamaTelaSobre();
         } else if (id == R.id.nav_detalhes) {

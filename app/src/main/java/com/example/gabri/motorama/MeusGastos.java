@@ -34,9 +34,12 @@ public class MeusGastos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meus_gastos);
         setTitle(getString(R.string.meus_gastos));
+
         listViewGastos = findViewById(R.id.listViewGastos);
 
         listViewGastos.setEmptyView(emptyText);
+
+        listarGastos();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fapGastos);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +49,6 @@ public class MeusGastos extends AppCompatActivity {
             }
         });
 
-
-        listarGastos();
 
         listViewGastos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -99,27 +99,15 @@ public class CadastrarMoto extends AppCompatActivity {
         if(modo == NOVO){
             //System.out.println("Entrou SAVE");
             database.motoDao().insert(moto);
-            //Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
         } else {
             //System.out.println("Entrou UPDATE");
             database.motoDao().update(moto);
-            //Toast.makeText(this, "Moto alterada com Sucesso !!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Moto alterada com Sucesso !!", Toast.LENGTH_SHORT).show();
         }
 
         setResult(Activity.RESULT_OK);
         finish();
-//        try {
-//
-//            database.motoDao().insert(moto);
-//            setResult(Activity.RESULT_OK);
-//            //Toast.makeText(this, "Moto inserida com Sucesso !!", Toast.LENGTH_SHORT).show();
-//            finish();
-//
-//        } catch(Exception e){
-//            System.out.println("GetMessage: " + e.getMessage());
-//        }
-
-
     }
 
     public static void novaMoto(Activity activity, int requestCode){
