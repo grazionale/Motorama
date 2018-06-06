@@ -53,4 +53,8 @@
     <string name="salvar">Salvar</string>
     <string name="informacoes_e_suporte">Informações e Suporte</string>
     <string name="detalhes">Detalhes</string>
+    <string name="modelo_vazio">Modelo está vazio</string>
+    <string name="marca_vazia">Marca está vazia</string>
+    <string name="campo_placa_vazio">Campo placa está vazio</string>
+    <string name="campo_ano_vazio">Campo ano vazio</string>
 </resources>

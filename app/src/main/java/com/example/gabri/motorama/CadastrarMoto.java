@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
+import com.example.gabri.utils.Utils;
 
 public class CadastrarMoto extends AppCompatActivity {
 
@@ -84,17 +85,42 @@ public class CadastrarMoto extends AppCompatActivity {
     public void cadastrarMoto(){
        // Toast.makeText(this, "PEGOU", Toast.LENGTH_SHORT).show();
 
-        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+        String modelo  = Utils.validaCampoTexto(this, editTextModelo, R.string.modelo_vazio);
+        if (modelo == null){
+            return;
+        }
 
-        int ano = Integer.parseInt(editTextAno.getText().toString());
-        String modelo = editTextModelo.getText().toString();
-        String marca = editTextMarca.getText().toString();
-        String placa = editTextPlaca.getText().toString();
+        String marca = Utils.validaCampoTexto(this,
+                editTextMarca,
+                R.string.marca_vazia);
+        if (marca == null){
+            return;
+        }
+
+        String placa = Utils.validaCampoTexto(this,
+                editTextPlaca,
+                R.string.campo_placa_vazio);
+        if (placa == null){
+            return;
+        }
+
+        MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
+        
+        if(editTextAno.length() <= 0){
+
+        } else {
+            int ano = Integer.parseInt(editTextAno.getText().toString());
+            moto.setAno(ano);
+        }
+
+        //String modelo = editTextModelo.getText().toString();
+        //String marca = editTextMarca.getText().toString();
+        //String placa = editTextPlaca.getText().toString();
 
         moto.setModelo(modelo);
         moto.setMarca(marca);
         moto.setPlaca(placa);
-        moto.setAno(ano);
+
         System.out.println("Moto Update: " + moto);
         if(modo == NOVO){
             //System.out.println("Entrou SAVE");

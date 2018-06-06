@@ -22,7 +22,6 @@ public class Moto {
     @NonNull
     private String marca;
 
-    @NonNull
     private int ano;
 
     public Moto() {
