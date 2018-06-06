@@ -50,10 +50,10 @@
 
         <activity
             android:name=".CadastrarGasto"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MeusGastos">
             <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.example.gabri.motorama.MainActivity" />
+            android:value="com.example.gabri.motorama.MeusGastos" />
         </activity>
 
         <activity

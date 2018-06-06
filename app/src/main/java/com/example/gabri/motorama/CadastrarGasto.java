@@ -5,7 +5,6 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -51,11 +50,7 @@ public class CadastrarGasto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrar_gasto);
 
-        // Aparentemente apenas o manifest é suficiente para fazer o botão up de voltar
-//        ActionBar actionBar = getSupportActionBar();
-//        if(actionBar != null){
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//        }
+        database = MotoramaDatabase.getDatabase(this);
 
         editTextDescricao = (EditText) findViewById(R.id.editTextDescricao);
         editTextComentario = (EditText) findViewById(R.id.editTextComentario);
