@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.view.ContextMenu;
 import android.view.View;
@@ -28,7 +27,6 @@ import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
 import com.example.gabri.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -233,7 +231,7 @@ public class MainActivity extends AppCompatActivity
             ChamaTelaMainActivity();
         } else if (id == R.id.nav_informacoes) {
             ChamaTelaSobre();
-        } else if (id == R.id.nav_detalhes) {
+        } else if (id == R.id.nav_configuracoes) {
             ChamaTelaDetalhes();
         } else if (id == R.id.nav_meus_gastos) {
             ChamaTelaMeusGastos();

@@ -16,7 +16,7 @@
 
     </group>
 
-    <item android:title="@string/configuracoes">
+    <item android:title="@string/detalhes">
         <menu>
             <item
                 android:id="@+id/nav_informacoes"
@@ -25,12 +25,12 @@
         </menu>
     </item>
 
-    <item android:title="@string/detalhes">
+    <item android:title="@string/configuracoes">
         <menu>
             <item
-                android:id="@+id/nav_detalhes"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/detalhes" />
+                android:id="@+id/nav_configuracoes"
+                android:icon="@drawable/ic_settings_black_24dp"
+                android:title="@string/configuracoes" />
         </menu>
     </item>
 
