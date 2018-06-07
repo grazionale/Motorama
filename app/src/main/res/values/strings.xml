@@ -57,4 +57,7 @@
     <string name="marca_vazia">Marca está vazia</string>
     <string name="campo_placa_vazio">Campo placa está vazio</string>
     <string name="campo_ano_vazio">Campo ano vazio</string>
+    <string name="campo_comentario_vazio">Campo comentario vazio</string>
+    <string name="campo_descricao_vazio">Campo descrição vazio</string>
+    <string name="campo_data_vazio">Campo data está vazio</string>
 </resources>

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.gabri.modelos.Gasto;
 import com.example.gabri.modelos.Moto;
 import com.example.gabri.persistencia.MotoramaDatabase;
+import com.example.gabri.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -146,15 +147,31 @@ public class CadastrarGasto extends AppCompatActivity {
     }
 
     public void cadastrarGasto(){
+        String descricao  = Utils.validaCampoTexto(this, editTextDescricao, R.string.campo_descricao_vazio);
+        if (descricao == null){
+            return;
+        }
+
+        String comentario = Utils.validaCampoTexto(this, editTextComentario, R.string.campo_comentario_vazio);
+        if (comentario == null){
+            return;
+        }
+
+        String data = Utils.validaCampoTexto(this, editTextData, R.string.campo_data_vazio);
+        if (data == null){
+            return;
+        }
+
+
         MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 
         String moto = spinnerMotos.getSelectedItem().toString();
-        String descricao = editTextDescricao.getText().toString();
-        String comentario = editTextComentario.getText().toString();
+        //String descricao = editTextDescricao.getText().toString();
+        //String comentario = editTextComentario.getText().toString();
         int km = Integer.parseInt(editTextKm.getText().toString());
         String ocorrencia = spinnerOcorrencia.getSelectedItem().toString();
         double valor = Double.parseDouble(editTextValor.getText().toString());
-        String data = editTextData.getText().toString();
+        //String data = editTextData.getText().toString();
 
         gasto.setMoto(moto);
         gasto.setDescricao(descricao);
