@@ -31,7 +31,7 @@ public class CadastrarGasto extends AppCompatActivity {
     Spinner spinnerOcorrencia;
     Button btnAdcGasto;
 
-    String[] itemsOcorrencia = new String[]{"Bateria", "Cambio", "Direção", "Elétrica", "Filtros", "Iluminação", "Motor", "Pneus", "Radiador", "Óleo", "Outros"};
+    //String[] itemsOcorrencia = new String[]{"Bateria", "Cambio", "Direção", "Elétrica", "Filtros", "Iluminação", "Motor", "Pneus", "Radiador", "Óleo", "Outros"};
 
     Calendar mCurrentDate;
     int dia, mes, ano;
@@ -69,8 +69,8 @@ public class CadastrarGasto extends AppCompatActivity {
         ArrayAdapter<Moto> adapterMotos = new ArrayAdapter<>(CadastrarGasto.this, android.R.layout.simple_list_item_1, listaDeMotos);
         spinnerMotos.setAdapter(adapterMotos);
 
-        ArrayAdapter<String> adapterOcorrencia = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemsOcorrencia);
-        spinnerOcorrencia.setAdapter(adapterOcorrencia);
+        //ArrayAdapter<String> adapterOcorrencia = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemsOcorrencia);
+        //spinnerOcorrencia.setAdapter(adapterOcorrencia);
 
         btnAdcGasto.setOnClickListener(new View.OnClickListener() {
             @Override

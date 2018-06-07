@@ -68,4 +68,18 @@
     <string name="celular">Celular:</string>
     <string name="email">E-mail</string>
     <string name="emaill">Email:</string>
+
+    <string-array name="ocorrencias">
+        <item>Bateria</item>
+        <item>Cambio</item>
+        <item>Direção</item>
+        <item>Elétrica</item>
+        <item>Filtros</item>
+        <item>Iluminação</item>
+        <item>Motor</item>
+        <item>Pneus</item>
+        <item>Radiador</item>
+        <item>Óleo</item>
+        <item>Outros</item>
+    </string-array>
 </resources>

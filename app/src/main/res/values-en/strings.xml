@@ -69,4 +69,18 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navegação cabeçalho</string>
+
+    <string-array name="ocorrencias">
+        <item>Battery</item>
+        <item>Change of car</item>
+        <item>Steering</item>
+        <item>Eletric</item>
+        <item>Filters</item>
+        <item>Lighting</item>
+        <item>Motor</item>
+        <item>Tires</item>
+        <item>Radiator</item>
+        <item>Oil</item>
+        <item>Others</item>
+    </string-array>
 </resources>
