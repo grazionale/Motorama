@@ -68,6 +68,7 @@
     <string name="celular">Celular:</string>
     <string name="email">E-mail</string>
     <string name="emaill">Email:</string>
+    <string name="gastos_da_moto">Gastos da Moto</string>
 
     <string-array name="ocorrencias">
         <item>Bateria</item>

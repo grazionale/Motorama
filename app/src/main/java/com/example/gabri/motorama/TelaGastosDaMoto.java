@@ -30,7 +30,7 @@ public class TelaGastosDaMoto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_gastos_da_moto);
 
-        setTitle("Gasto da Moto");
+        setTitle(getString(R.string.gastos_da_moto));
 
         listViewGastosDaMoto = findViewById(R.id.listViewGastosDaMoto);
 
@@ -61,7 +61,6 @@ public class TelaGastosDaMoto extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
 
         if(extras == null){
-            System.out.println("DEU RUIM");
         } else {
             MotoramaDatabase database = MotoramaDatabase.getDatabase(this);
 

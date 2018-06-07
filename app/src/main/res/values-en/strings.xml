@@ -83,4 +83,5 @@
         <item>Oil</item>
         <item>Others</item>
     </string-array>
+    <string name="gastos_da_moto">Motorcycle spending</string>
 </resources>
