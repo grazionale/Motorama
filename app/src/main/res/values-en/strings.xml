@@ -49,4 +49,24 @@
     <string name="action_settings">Settings</string>
     <string name="detalhes">Details</string>
     <string name="informacoes_e_suporte">Information and Support</string>
+    <string name="modelo_vazio">Model field is empty</string>
+    <string name="marca_vazia">Mark field is empty</string>
+    <string name="campo_placa_vazio">Plate field is empty</string>
+    <string name="campo_ano_vazio">Year field is empty</string>
+    <string name="campo_comentario_vazio">Comment field is empty</string>
+    <string name="campo_descricao_vazio">Description field is empty</string>
+    <string name="campo_data_vazio">Date field is empty</string>
+    <string name="sobre_aplicacao">About app</string>
+    <string name="sobre_autor">About author</string>
+    <string name="contato">Contact</string>
+    <string name="texto_autor">I am Gabriel Grazionale, I was born in Maringá and the programming for me represents my future. This application was developed with the objective of obtaining the grade of the final project of the discipline of Mobile Devices of the Universidade Técnica Federal do Paraná.</string>
+    <string name="texto_app">Motorama aims to facilitate and help control motorcycle expenses. The user can add their vehicles and register their expenses. In addition, you can view your motorcycle spending or the total set of expenses.</string>
+    <string name="celular">Phone:</string>
+    <string name="email">Email</string>
+    <string name="emaill">Email:</string>
+    <string name="navigation_drawer_open">Abrir navegação lateral</string>
+    <string name="navigation_drawer_close">Fechar navegação lateral</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navegação cabeçalho</string>
 </resources>

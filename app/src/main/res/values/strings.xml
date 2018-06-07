@@ -53,11 +53,19 @@
     <string name="salvar">Salvar</string>
     <string name="informacoes_e_suporte">Informações e Suporte</string>
     <string name="detalhes">Detalhes</string>
-    <string name="modelo_vazio">Modelo está vazio</string>
-    <string name="marca_vazia">Marca está vazia</string>
+    <string name="modelo_vazio">Campo modelo está vazio</string>
+    <string name="marca_vazia">Campo marca está vazia</string>
     <string name="campo_placa_vazio">Campo placa está vazio</string>
     <string name="campo_ano_vazio">Campo ano vazio</string>
     <string name="campo_comentario_vazio">Campo comentario vazio</string>
     <string name="campo_descricao_vazio">Campo descrição vazio</string>
     <string name="campo_data_vazio">Campo data está vazio</string>
+    <string name="sobre_aplicacao">Sobre a aplicação</string>
+    <string name="sobre_autor">Sobre o Autor</string>
+    <string name="contato">Contato</string>
+    <string name="texto_autor">Eu sou Gabriel Grazionale, nasci em Maringá e a programação para mim representa meu futuro. Essa aplicação foi desenvolvida com objetivo de obtenção da nota do projeto final da disciplina de Dispositivos Móveis da Universidade Técnológica Federal do Paraná.</string>
+    <string name="texto_app">O Motorama tem como objetivo facilitar e ajudar no controle de gastos de motocicletas. O usuário poderá adicionar seus veículos e cadastrar seus gastos. Além disso, poderá visualizar seus gastos por motocicletas ou o conjunto total de gastos.</string>
+    <string name="celular">Celular:</string>
+    <string name="email">E-mail</string>
+    <string name="emaill">Email:</string>
 </resources>
